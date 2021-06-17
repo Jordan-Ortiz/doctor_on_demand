@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from clinics.models import Clinic
+from rest_framework import viewsets
+from clinics.serializers import ClinicSerializer
 
-# Create your views here.
+
+class ClinicViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint for Clinics
+    """
+    queryset = Clinic.objects.all()
+    serializer_class = ClinicSerializer
