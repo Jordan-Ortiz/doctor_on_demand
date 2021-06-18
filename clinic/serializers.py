@@ -1,11 +1,17 @@
-from clinics.models import Clinic, Doctor
+from clinic.models import Clinic, Doctor, Nurse
 from rest_framework import serializers
 
 
 class DoctorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Doctor
-        fields = ['first_name', 'last_name']
+        fields = ['first_name', 'last_name', 'clinic']
+
+
+class NurseSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Nurse
+        fields = ['first_name', 'last_name', 'clinic']
 
 
 class ClinicSerializer(serializers.HyperlinkedModelSerializer):
@@ -13,4 +19,5 @@ class ClinicSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Clinic
-        fields = ['name', 'street_address', 'city', 'state', 'doctors']
+        fields = ['name', 'street_address', 'city', 'state', 'doctors', 'nurses']
+
